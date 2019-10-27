@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import {Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import Home from './pages/Home.js';
 import DuckFeeding from './pages/DuckFeeding.js';

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 
 import './Layout.css';
 

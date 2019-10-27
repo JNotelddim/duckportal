@@ -6,7 +6,7 @@ export default class Home extends Component{
     render() {
         return <div>
             <Layout>
-                <p>This is the home page</p>
+                <p>This is the home page - to log a duck-feeding session, go to 'Feed Ducks'.</p>
             </Layout>
         </div>
     }
