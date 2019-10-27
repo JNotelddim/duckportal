@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Layout from './comp/Layout.js';
+import Layout from '../comp/Layout.js';
 
-export default class App extends Component{
+export default class Home extends Component{
     
     render() {
         return <div>
             <Layout>
-                <p>Test!</p>
+                <p>This is the home page</p>
             </Layout>
         </div>
     }
