@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import {Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import Home from './pages/Home.js';
 import DuckFeeding from './pages/DuckFeeding.js';
+import NotFound from './notfound.js';
 
 const routing = (
     <Router>
         <div>
-            <Route exact path="/" component={Home}/>
-            <Route path="/DuckFeeding" component={DuckFeeding}/>
+            <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route path="/DuckFeeding" component={DuckFeeding}/>
+                <Route component={NotFound} />
+            </Switch>
         </div>
     </Router>
 )
