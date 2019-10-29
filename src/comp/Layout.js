@@ -19,16 +19,10 @@ class Layout extends Component{
 
     render(){
         return <div className="Layout">
-                <head>
-                    <title>{this.title}</title>
-                    <meta charSet="utf-8"/>
-                    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-                </head>
-
                 <nav className="sNav">
                     <ul>
-                        {this.navItems.map(item =>
-                            <li className="sLink"><Link to={item.path}>| {item.title}</Link></li>
+                        {this.navItems.map((item, i) =>
+                            <li className="sLink" key={i}><Link to={item.path}>| {item.title}</Link></li>
                         )}
                     </ul>      
                     <hr />

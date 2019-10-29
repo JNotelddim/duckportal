@@ -4,11 +4,10 @@ import Layout from '../comp/Layout.js';
 export default class Home extends Component{
     
     render() {
-        return <div>
-            <Layout>
-                <p>This is the home page - to log a duck-feeding session, go to 'Feed Ducks'.</p>
+        return <Layout>
+                <h3> Home Page</h3>
+                <p>Did you feed some ducks recently and want to log it? Go to 'Feed Ducks'.</p>
             </Layout>
-        </div>
     }
 
 };
