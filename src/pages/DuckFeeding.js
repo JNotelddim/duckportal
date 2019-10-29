@@ -3,6 +3,9 @@ import { TextField, FormControl, InputLabel, Input, Button} from '@material-ui/c
 
 import Layout from '../comp/Layout.js';
 
+//const API_URL = "http://127.0.0.1:8000/feedingSessions/"
+const API_URL = "https://duckapp-jm.herokuapp.com/feedingSessions/"
+
 export default class DuckFeeding extends Component{
 
     constructor(props){
@@ -22,19 +25,36 @@ export default class DuckFeeding extends Component{
     }
 
     onChange (event){
-        //console.log(event.target.name);
-        //console.log(event.target.value);
         this.state[event.target.name] = event.target.value;
-        //console.log(this.state);
     }
     
     handleSubmit(params){
         alert(this.state);
-        console.log(params);
+        this.putSessionInfo();
     }
 
     putSessionInfo(){
         console.log(this.state);
+        
+        let postBody = {}
+        postBody['feeding_time'] = this.state.time;
+        postBody['food'] = this.state.food;
+        postBody['food_type'] = this.state.foodType;
+        postBody['food_quantity'] = this.state.amount;
+        postBody['location'] = this.state.location;
+        postBody['duck_count'] = this.state.duckNumber;
+
+        fetch(API_URL, 
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(postBody)
+        })
+        .then((resp) => console.log(resp))
+        .catch((e) => console.log(e));
     }
 
 
