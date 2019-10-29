@@ -4,7 +4,7 @@ import { TextField, FormControl, InputLabel, Input, Button} from '@material-ui/c
 import Layout from '../comp/Layout.js';
 
 //const API_URL = "http://127.0.0.1:8000/feedingSessions/"
-const API_URL = "https://duckapp-jm.herokuapp.com/feedingSessions/"
+const API_URL = "https://duckapp-jm.herokuapp.com/feedingSessions/" //TODO: refactor constants into config file
 
 export default class DuckFeeding extends Component{
 
