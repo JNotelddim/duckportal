@@ -5,19 +5,20 @@ import Layout from '../comp/Layout.js';
 
 //const API_URL = "http://127.0.0.1:8000/feedingSessions/"
 const API_URL = "https://duckapp-jm.herokuapp.com/feedingSessions/" //TODO: refactor constants into config file
+const DEFAULT_STATE = {
+    time: "",
+    duckNumber: 0,
+    location: "",
+    food: "",
+    foodType: "",
+    amount: ""
+};
 
 export default class DuckFeeding extends Component{
 
     constructor(props){
         super(props);
-        this.state = {
-            time: "",
-            duckNumber: 0,
-            location: "",
-            food: "",
-            foodType: "",
-            amount: ""
-        };
+        this.state = DEFAULT_STATE;
 
         this.onChange= this.onChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,6 +27,14 @@ export default class DuckFeeding extends Component{
 
     onChange (event){
         this.state[event.target.name] = event.target.value;
+    }
+    
+    clearState(){
+        //this.setState(DEFAULT_STATE);
+        //note, I'd like to just be clearing the state and having it refresh that way -- but I don't have it set up so the inputs' values will clear based on the state clearing -- and I'm out of time, so for now the form is just cleared by re-naviating. it's lame and hacky but it works.. 
+        
+        //also worth noting, it wouldn't be necessary if I was using a button of type="submit" .. but when I was using a "submit" button my POSTs were failing, and again, I didn't have time to fix that -- so I went for a regular button which would trigger the same request, and just manually clear it out.
+        window.location.href = '/DuckFeeding';
     }
     
     handleSubmit(params){
@@ -52,7 +61,7 @@ export default class DuckFeeding extends Component{
             method: "POST",
             body: JSON.stringify(postBody)
         })
-        .then((resp) => console.log(resp))
+        .then((resp) => {console.log(resp); this.clearState();})
         .catch((e) => { 
             alert("Request failed, please try again.");
             console.log(e);
@@ -67,14 +76,12 @@ export default class DuckFeeding extends Component{
                 <h3>Duck Feeding</h3>
                 
                 <form onSubmit={this.handleSubmit}>
-
                     <InputLabel>Time of Feeding</InputLabel>
                     <FormControl>
                         <Input 
                             type="datetime-local"
                             name="time"
                             placeholder="" 
-                            required
                             onChange={this.onChange}>
                         </Input>
                     </FormControl>
@@ -127,10 +134,9 @@ export default class DuckFeeding extends Component{
                     </FormControl>
                     <br/>
                     
-                    <FormControl>
-                        <Button color="primary" type="submit">Submit</Button>
-                    </FormControl>
                     <br/>
+
+                    <Button color="primary" onClick={this.putSessionInfo}>Submit</Button>
 
                 </form>
 
