@@ -48,7 +48,7 @@ export default class Overview extends Component{
                 )}
 
                 <hr />
-                <p>Note, I do not have enough time to figure out how to trigger another render of the Layout component from the Overview component once its state is updated -- so this page doesnt have the same layout as the others. As such, you will just have to click 'Back' in your browser to return to your previous page (or navigate directly with a url).</p>
+                <p>Note, I have run out of time time for figuring out how to trigger another render of the Layout component from the Overview component once its state is updated -- so this page doesnt have the same layout as the others. As such, you will just have to click 'Back' in your browser to return to your previous page (or navigate directly with a url).</p>
 
             </div>
     }

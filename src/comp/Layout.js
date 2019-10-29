@@ -13,7 +13,8 @@ class Layout extends Component{
         this.navItems = [
             {title: "Home", path: "/"},
             {title: "Feed Ducks", path: "/DuckFeeding"},
-            {title: "Overview", path: "/Overview", disabled: true},
+            {title: "Overview", path: "/Overview"},
+            {title: "Unimplemented Page", path: "/UnimplementedPage"},
         ]
     }
 
@@ -28,8 +29,10 @@ class Layout extends Component{
                     <hr />
                 </nav>
             
-                {this.children}
-        
+                <div className="layoutBody">
+                    {this.children}
+                </div>
+
                 <footer>
                     <hr />
                     <span>This app created for Freshworks.io by Jared Middleton</span>

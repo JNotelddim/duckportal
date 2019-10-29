@@ -29,7 +29,6 @@ export default class DuckFeeding extends Component{
     }
     
     handleSubmit(params){
-        alert(this.state);
         this.putSessionInfo();
     }
 
@@ -55,7 +54,7 @@ export default class DuckFeeding extends Component{
         })
         .then((resp) => console.log(resp))
         .catch((e) => { 
-            alert("Request failed, please double-check your input.");
+            alert("Request failed, please try again.");
             console.log(e);
         });
     }
@@ -68,12 +67,14 @@ export default class DuckFeeding extends Component{
                 <h3>Duck Feeding</h3>
                 
                 <form onSubmit={this.handleSubmit}>
+
+                    <InputLabel>Time of Feeding</InputLabel>
                     <FormControl>
-                        <InputLabel>Time of Feeding</InputLabel>
                         <Input 
                             type="datetime-local"
                             name="time"
                             placeholder="" 
+                            required
                             onChange={this.onChange}>
                         </Input>
                     </FormControl>
@@ -84,6 +85,7 @@ export default class DuckFeeding extends Component{
                         <Input 
                             type="number" 
                             name="duckNumber"
+                            required
                             onChange={this.onChange}>
                         </Input>
                     </FormControl>
@@ -93,6 +95,7 @@ export default class DuckFeeding extends Component{
                     <TextField 
                         name="location"
                         label="Location"
+                        required
                         onChange={this.onChange}
                         />
                     <br/>
@@ -100,6 +103,7 @@ export default class DuckFeeding extends Component{
                     <TextField 
                         name="food"
                         label="Food"
+                        required
                         onChange={this.onChange}
                         />
                     <br/>
@@ -107,6 +111,7 @@ export default class DuckFeeding extends Component{
                     <TextField 
                         name="foodType"
                         label="Food Type"
+                        required
                         onChange={this.onChange}
                         />
                     <br/>
@@ -116,6 +121,7 @@ export default class DuckFeeding extends Component{
                         <Input 
                             type="text" 
                             name="amount"
+                            required
                             onChange={this.onChange}>
                         </Input>
                     </FormControl>
@@ -125,8 +131,6 @@ export default class DuckFeeding extends Component{
                         <Button color="primary" type="submit">Submit</Button>
                     </FormControl>
                     <br/>
-
-                    <Button color="primary" onClick={this.putSessionInfo}>Send Req</Button>
 
                 </form>
 
