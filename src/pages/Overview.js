@@ -21,38 +21,36 @@ export default class Overview extends Component{
     async componentDidMount(){
         let response = await fetch(API_URL);
         let json = await response.json();
-        this.setState({isLoading: false, sessions: json})
+        this.setState({isLoading: false, sessions: json});
+        this.forceUpdate();
     }
 
 
     render() {
-        let content = <p>{this.loadingMessage}</p>;
+        let content;
         let isLoading = this.state.isLoading;
         let sessions = this.state.sessions;
-
-        if(!isLoading){
-
-            if(!sessions || !sessions.length){
-                content = <p>{this.errorMessage}</p>;
-            } else {
-                content = <ul>
-                {
-                     sessions.map((s,i) => 
-                             <li key={i}>
-                                <span> {s} fed. </span>
-                             </li>
-                        )   
-                } </ul>;
-            }
-        }
 
         console.log("render : " + isLoading + " ; " + sessions.length);
         console.log(content);
 
-        return <Layout>
+        let statusMessage = isLoading ? this.loadingMessage : 
+            !sessions.length ? this.errorMessage : ""; 
+
+        return <div>
                 <h3> Logged Duck Feeding Sessions </h3>
-                {content}
-            </Layout>
+                <p>{statusMessage}</p>
+
+                {sessions.map((s,i) => 
+                     <li key={i}>
+                        <span> {s['duck_count']} ducks fed at location: {s['location']} at time: {s['feeding_time']}. </span>
+                     </li>
+                )}
+
+                <hr />
+                <p>Note, I do not have enough time to figure out how to trigger another render of the Layout component from the Overview component once its state is updated -- so this page doesnt have the same layout as the others. As such, you will just have to click 'Back' in your browser to return to your previous page (or navigate directly with a url).</p>
+
+            </div>
     }
 
 };
