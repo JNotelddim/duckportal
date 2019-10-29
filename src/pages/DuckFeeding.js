@@ -54,7 +54,10 @@ export default class DuckFeeding extends Component{
             body: JSON.stringify(postBody)
         })
         .then((resp) => console.log(resp))
-        .catch((e) => console.log(e));
+        .catch((e) => { 
+            alert("Request failed, please double-check your input.");
+            console.log(e);
+        });
     }
 
 
